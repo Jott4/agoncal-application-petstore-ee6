@@ -1,5 +1,8 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
@@ -21,20 +24,32 @@ public class Address {
     @Column(nullable = false)
     @NotNull
     @Size(min = 5, max = 50)
+    @Getter
+    @Setter
     private String street1;
+    @Getter
+    @Setter
     private String street2;
     @Column(nullable = false, length = 100)
     @NotNull
     @Size(min = 2, max = 50)
+    @Getter
+    @Setter
     private String city;
+    @Getter
+    @Setter
     private String state;
     @Column(name = "zip_code", nullable = false, length = 10)
     @NotNull
     @Size(min = 1, max = 10)
+    @Getter
+    @Setter
     private String zipcode;
     @Column(nullable = false, length = 50)
     @NotNull
     @Size(min = 2, max = 50)
+    @Getter
+    @Setter
     private String country; // TODO use an enum
 
     // ======================================
@@ -51,57 +66,7 @@ public class Address {
         this.country = country;
     }
 
-    // ======================================
-    // =         Getters & setters          =
-    // ======================================
 
-    public String getStreet1() {
-        return street1;
-    }
-
-    public void setStreet1(String street1) {
-        this.street1 = street1;
-    }
-
-    public String getStreet2() {
-        return street2;
-    }
-
-    public void setStreet2(String street2) {
-        this.street2 = street2;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     // ======================================
     // =   Methods hash, equals, toString   =

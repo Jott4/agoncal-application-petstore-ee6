@@ -1,5 +1,7 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.agoncal.application.petstore.constraint.Email;
 import org.agoncal.application.petstore.constraint.Login;
 import org.agoncal.application.petstore.exception.ValidationException;
@@ -35,32 +37,50 @@ public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
     private Long id;
     @Column(unique = true, nullable = false, length = 10)
     @Login
+    @Getter
+    @Setter
     private String login;
     @Column(nullable = false, length = 10)
     @NotNull
     @Size(min = 1, max = 10)
+    @Getter
+    @Setter
     private String password;
     @Column(nullable = false)
     @NotNull
     @Size(min = 2, max = 50)
+    @Getter
+    @Setter
     private String firstname;
     @Column(nullable = false)
     @NotNull
     @Size(min = 2, max = 50)
+    @Getter
+    @Setter
     private String lastname;
+    @Getter
+    @Setter
     private String telephone;
     @Email
+    @Getter
+    @Setter
     private String email;
     @Embedded
     @Valid
+    @Getter
+    @Setter
     private Address homeAddress = new Address();
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
+    @Getter
+    @Setter
     private Date dateOfBirth;
     @Transient
+    @Getter
     private Integer age;
 
     // ======================================
@@ -135,82 +155,6 @@ public class Customer implements Serializable {
             throw new ValidationException("Passwords don't match");
     }
 
-    // ======================================
-    // =         Getters & setters          =
-    // ======================================
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
-    public Address getHomeAddress() {
-        return homeAddress;
-    }
-
-    public void setHomeAddress(Address homeAddress) {
-        this.homeAddress = homeAddress;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
 
     // ======================================
     // =   Methods hash, equals, toString   =
