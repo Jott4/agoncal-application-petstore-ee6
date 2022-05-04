@@ -1,5 +1,6 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.agoncal.application.petstore.constraint.NotEmpty;
@@ -26,6 +27,7 @@ import java.util.List;
         @NamedQuery(name = Category.FIND_ALL, query = "SELECT c FROM Category c")
 })
 @XmlRootElement
+@EqualsAndHashCode
 public class Category {
 
     // ======================================
@@ -87,22 +89,6 @@ public class Category {
     // =   Methods hash, equals, toString   =
     // ======================================
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Category)) return false;
-
-        Category category = (Category) o;
-
-        if (!name.equals(category.name)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return name.hashCode();
-    }
 
     @Override
     public String toString() {

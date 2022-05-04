@@ -1,5 +1,6 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,7 @@ import javax.validation.constraints.Size;
  */
 
 @Embeddable
+@EqualsAndHashCode
 public class CreditCard {
 
     // ======================================
@@ -60,22 +62,6 @@ public class CreditCard {
     // =   Methods hash, equals, toString   =
     // ======================================
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CreditCard)) return false;
-
-        CreditCard that = (CreditCard) o;
-
-        if (!creditCardNumber.equals(that.creditCardNumber)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return creditCardNumber.hashCode();
-    }
 
     @Override
     public String toString() {

@@ -1,5 +1,6 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.agoncal.application.petstore.constraint.Email;
@@ -29,6 +30,7 @@ import java.util.GregorianCalendar;
         @NamedQuery(name = Customer.FIND_ALL, query = "SELECT c FROM Customer c")
 })
 @XmlRootElement
+@EqualsAndHashCode
 public class Customer implements Serializable {
 
     // ======================================
@@ -159,23 +161,6 @@ public class Customer implements Serializable {
     // ======================================
     // =   Methods hash, equals, toString   =
     // ======================================
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Customer)) return false;
-
-        Customer customer = (Customer) o;
-
-        if (!login.equals(customer.login)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return login.hashCode();
-    }
 
     @Override
     public String toString() {
